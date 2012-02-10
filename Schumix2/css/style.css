@@ -1,0 +1,124 @@
+body
+{
+	font-family: "Bitstream Vera Sans", sans-serif;
+	font-size: 80%;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+	background-image: url(../images/hatter.png);
+	background-repeat: repeat-x;
+	background-color: #FFFFFF;
+}
+
+div#container
+{
+	border: 1px solid #000000;
+	width: 320px;
+	height: 245px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -220px;
+	margin-left: -175px;
+	background-color: #FFFFFF;
+}
+
+a
+{
+	color: black;
+}
+
+div.centered table 
+{
+	margin: 0 auto; 
+	text-align: left;
+}
+
+div.centered 
+{
+	text-align: center;
+}
+
+#login-center
+{
+	width: 150px;
+	height: 100px;
+	margin-top: 65px;
+	margin-left: 75px;
+}
+
+#linkresz
+{
+	background: url(../images/link.png) no-repeat;
+	background-position: top center;
+	height: 42px;
+}
+
+div#hirresz
+{
+	border: 1px solid #000000;
+	width: 942px;
+	height: 60px;
+	background-color: #FFF000;
+}
+
+div#kozep
+{
+	border: 1px solid #000000;
+	width: 942px;
+	background-color: #FFFFFF;
+}
+
+#kozep-a1
+{
+	background: url(../images/kozep-a-alja.png) no-repeat;
+	background-position: top center;
+	height: 20px;
+}
+
+#header
+{
+	background-image: url(../images/top.gif);
+	background-repeat: repeat-x;
+	background-color: black;
+	border-bottom: 2px solid white;
+	margin-bottom: 60px;
+	height: 140px;
+}
+
+.wrapper
+{
+	width: 942px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ablak
+{
+	width: 220px;
+	margin-left: auto;
+	margin-right: 0;
+	margin-bottom: -76px;
+}
+
+.wrapper h1
+{
+	margin: 0;
+	padding: 0;
+	font-size: 220%;
+	color: white;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.navbar
+{
+	text-align: right;
+	padding: 0;
+	margin: 0;
+	color: white;
+	padding-top: 20px;
+}
+
+ul.sf-menu {background:url(../images/link.png) no-repeat top left; height:42px; width:942px;}
+
