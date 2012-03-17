@@ -36,15 +36,6 @@ function vhost($vhost_n)
 		return "Nincs aktiválva.";
 }
 
-function head()
-{
-	echo '<head>
-		<link rel="stylesheet" href="css/style.css" type="text/css" />
-		<link rel="stylesheet" href="css/superfish.css" type="text/css" />
-		<script src="./js/superfish.js" type="text/javascript"></script>
-	      </head>';
-}
-
 function Copyright()
 {
 	echo '<br /><br /><div align="center"><h4>Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</h4></div>';
