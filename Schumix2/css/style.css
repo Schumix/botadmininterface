@@ -85,15 +85,6 @@ div.centered
 	font-size: 18px;
 }
 
-#login-logo
-{
-	background: url(../images/logo.png) no-repeat;
-	height: 48px;
-	width: 48px;
-	margin-top: -30px;
-	margin-left: 200px;
-}
-
 input[type=submit]
 {
 	display: inline-block;
@@ -280,5 +271,9 @@ div#kozep
 	padding-top: 20px;
 }
 
-ul.sf-menu {background:url(../images/link.png) no-repeat top left; height:42px; width:942px;}
-
+ul.sf-menu
+{
+	background: url(../images/link.png) no-repeat top left;
+	height: 42px;
+	width: 942px;
+}

@@ -26,7 +26,7 @@ if(!empty($_POST['acc']) && !empty($_POST['pass']))
 	{
 			//include "function.php";
 			head();
-			echo '<div style="position:absolute; top:50%; left:50%; margin-left: -130px;">Rossz felhasználónév, vagy jelszó!</div>';
+			echo '<div style="position:absolute; top:40%; left:50%; margin-left: -130px;">Rossz felhasználónév, vagy jelszó!</div>';
 			echo '<div style="position:absolute; top:92%; left:50%; margin-left: -200px;"><h4>Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</h4></div>';
 			header("refresh:1;url=index.html");
 	}
@@ -35,7 +35,7 @@ else
 {
 		//include "function.php";
 		head();
-		echo '<div style="position:absolute; top:50%; left:50%; margin-left: -130px;">Rossz felhasználónév, vagy jelszó!</div>';
+		echo '<div style="position:absolute; top:40%; left:50%; margin-left: -130px;">Rossz felhasználónév, vagy jelszó!</div>';
 		echo '<div style="position:absolute; top:92%; left:50%; margin-left: -200px;"><h4>Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</h4></div>';
 		header("refresh:1;url=index.html");
 }
