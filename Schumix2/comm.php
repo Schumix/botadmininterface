@@ -1,8 +1,6 @@
 <?php
 if(!session_is_registered(acc))
-{
-	header("location:index.html");
-}
+	header("location:index.php");
 
 function commands()
 {

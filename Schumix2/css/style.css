@@ -17,11 +17,10 @@ div#container
 	-webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
 	box-shadow: 0 0 3px rgba(0,0,0,0.2);
 	width: 320px;
-	height: 245px;
+	padding: 0 0 12px;
 	position: absolute;
-	top: 50%;
 	left: 50%;
-	margin-top: -220px;
+	margin-top: 180px;
 	margin-left: -175px;
 	background-color: #FFFFFF;
 }
@@ -71,10 +70,16 @@ div.centered
 	text-align: center;
 }
 
+.errormsg
+{
+	margin: 8px 0 10px;
+	display: block;
+	color: #DD4B39;
+	line-height: 17px;
+}
+
 #login-center
 {
-	width: 200px;
-	height: 100px;
 	margin-top: 26px;
 	margin-left: 40px;
 }
@@ -128,10 +133,11 @@ input[type=password],
 input[type=text]
 {
 	display: inline-block;
-	height: 29px;
+	height: 32px;
 	width: 240px;
 	margin: 0;
 	padding: 0 8px;
+	font-size: 16px;
 	background: #fff;
 	border: 1px solid #d9d9d9;
 	border-top: 1px solid #c0c0c0;
@@ -239,7 +245,7 @@ div#kozep
 
 .wrapper
 {
-	width: 942px;
+	width: 960px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -275,5 +281,31 @@ ul.sf-menu
 {
 	background: url(../images/link.png) no-repeat top left;
 	height: 42px;
-	width: 942px;
+	width: 960px;
+}
+
+footer
+{
+	height: auto;
+	position: relative;
+	background: url(../images/footer-bg.jpg) repeat-x left top;
+	color: #777;
+	font-size: 11px;
+	overflow: hidden;
+	margin-top: 30px;
+}
+
+#bottom-footer
+{
+	position: relative;
+	overflow: hidden;
+	padding: 17px 0 12px;
+	background: url(../images/bottom-footer-bg.png) repeat-x top left;
+	color: #999;
+}
+
+#bottom-footer p
+{
+	margin: 0;
+	line-height: 16px;
 }

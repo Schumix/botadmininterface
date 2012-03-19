@@ -38,6 +38,16 @@ function vhost($vhost_n)
 
 function Copyright()
 {
-	echo '<br /><br /><div align="center"><h4>Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</h4></div>';
+echo '
+	</div>
+	<footer>
+		<div align="center">
+			<div id="bottom-footer">
+				<div class="container">
+					<p class="alignleft">Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</p>
+				</div>
+			</div>
+		</div>
+	</footer>';
 }
 ?>

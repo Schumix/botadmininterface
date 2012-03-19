@@ -1,7 +1,8 @@
 <?php
-if(!session_is_registered(acc)){ echo "Rossz felhasználónév, vagy jelszó!"; }
+if(!session_is_registered(acc))
+	header("location:index.php");
 else
 {
-include "lvl0.php";
+	include "lvl0.php";
 }
 ?>

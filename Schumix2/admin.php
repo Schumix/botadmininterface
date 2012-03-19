@@ -1,17 +1,21 @@
 <?php
-header('Content-type: text/html; charset=utf-8');
 include "config.php";
 include "head.php";
 include "function.php";
 
-head();
+echo '<html>';
+
+if(isset($_GET['home']))
+	head("Főoldal");
+else
+	head();
+
 session_start();
 
 if(!session_is_registered(acc))
-{
-	header("location:index.html");
-}
+	header("location:index.php");
 
+echo '<body>';
 echo '<div id="header">
 	<div class="ablak">
 		<br />
@@ -85,8 +89,11 @@ else if($_GET['status'] == 2)
 }
 else if($_GET['status'] == 1)
 {
+	unset($_SESSION["user"]);
+	unset($_SESSION["rank"]);
+	session_unset();
 	session_destroy();
-	header("refresh:1;url=index.html");
+	header("refresh:1;url=index.php");
 	echo '<div align="center">Sikeresen kijelentkeztél.</div>';
 	Copyright();
 }
@@ -121,5 +128,7 @@ else
 	Copyright();
 }
 
-echo '</div></div>';
+echo '</div>';
+echo '</body>';
+echo '</html>';
 ?>
