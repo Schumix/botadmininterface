@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-if(session_is_registered(acc))
+if(session_is_registered("acc"))
 	header("location:admin.php?home");
 
 include "functions/head.php";
