@@ -211,18 +211,10 @@ input[type=text][readonly=readonly]:focus
 	height: 42px;
 }
 
-div#hirresz
-{
-	border: 1px solid #000000;
-	width: 942px;
-	height: 60px;
-	background-color: #FFF000;
-}
-
 div#kozep
 {
 	border: 1px solid #000000;
-	width: 942px;
+	width: 960px;
 	background-color: #FFFFFF;
 }
 
@@ -245,17 +237,9 @@ div#kozep
 
 .wrapper
 {
-	width: 960px;
+	width: 970px;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-.ablak
-{
-	width: 220px;
-	margin-left: auto;
-	margin-right: 0;
-	margin-bottom: -76px;
 }
 
 .wrapper h1
@@ -266,6 +250,25 @@ div#kozep
 	color: white;
 	padding-top: 40px;
 	padding-bottom: 40px;
+}
+
+.ablak
+{
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.ablak
+{
+	position: relative;
+	width: 220px;
+	background: #1a1a1a;
+	border: 1px solid #ccc;
+	left: 718px;
+	margin-top: -95px;
+	margin-bottom: 16px;
+	padding: 10px;
 }
 
 .navbar
@@ -308,4 +311,59 @@ footer
 {
 	margin: 0;
 	line-height: 16px;
+}
+
+#pagename
+{
+	background: url(../images/pagename-bg.png) no-repeat left top;
+	margin-bottom: 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	position: relative;
+	width: 960px;
+	height: 100px;
+	color: #cacaca;
+	font-size: 12px;
+}
+
+#pagename .inside
+{
+	padding: 10px 20px 30px;
+	background: url(../images/kozep-a-alja.png) no-repeat scroll center 100px;
+}
+
+#pagename h2
+{
+	color: #fff;
+	margin-bottom: 5px;
+}
+
+.content .inside
+{
+	padding: 20px 5px 5px;
+	text-shadow: #1a1a1a 0px -1px 0px;
+	text-align: center;
+	line-height: 17px;
+}
+
+.content .inside span
+{
+	font-size: 12px;
+}
+
+#sidebar-border
+{
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+#sidebar-border
+{
+	position: relative;
+	width: 930px;
+	background: #f2f2f2;
+	border: 1px solid #ccc;
+	padding: 15px;
 }

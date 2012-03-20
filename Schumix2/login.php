@@ -1,6 +1,6 @@
 <?php
-include "head.php";
-include "function.php";
+include "functions/head.php";
+include "functions/function.php";
 
 // username and password sent from form 
 // To protect MySQL injection (more detail about MySQL injection)
@@ -22,9 +22,15 @@ if(!empty($_POST['acc']) && !empty($_POST['pass']))
 			header("location:admin.php?status=2");
 	}
 	else
-		header("location:index.php?error");
+	{
+		$db->select('admins', '*', "Name='".$acc."'");
+		if($db->get_num_rows() == 1)
+			header("location:index.php?error=password");
+		else
+			header("location:index.php?error=user");
+	}
 }
 else
-	header("location:index.php?error");
+	header("location:index.php?error=notext");
 
 ?>

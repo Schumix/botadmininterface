@@ -4,16 +4,26 @@ if(!session_is_registered(acc))
 
 //include "database.php";
 
-echo '<div class="centered">
-	<table>
-		<form method="post">
-			<b>Régi jelszó</b><br /><input name="oldpass" type="password"><br /><br />
-			<b>Új jelszó</b><br /><input name="newpass" type="password"><br />
-			<b>Új jelszó újra</b><br /><input name="newpass2" type="password"><br /><br />
-			<div align="center"><input type="submit" value="Módosítás"></div>
-		</form>
-	</table>
-	</div>';
+echo '
+			<div id="pagename">
+				<div class="inside">
+					<h2>Új jelszó</h2>
+					<p>Ezen menüpont segítségével új jelszó generálható a régi helyett.</p>
+				</div>
+			</div>
+			<div id="sidebar-border">
+				<div align="center">
+					<table>
+						<form method="post">
+							<b>Régi jelszó</b><br /><input name="oldpass" type="password"><br /><br />
+							<b>Új jelszó</b><br /><input name="newpass" type="password"><br />
+							<b>Új jelszó újra</b><br /><input name="newpass2" type="password"><br /><br />
+							<div align="center"><input type="submit" value="Módosítás"></div>
+						</form>
+					</table>
+				</div>
+			</div>
+			<div id="kozep-a1"></div>';
 
 if(!$_POST)
 {

@@ -1,5 +1,5 @@
 <?php
-include "database.php";
+include "database/database.php";
 
 function rank($nick)
 {
@@ -39,15 +39,15 @@ function vhost($vhost_n)
 function Copyright()
 {
 echo '
-	</div>
-	<footer>
-		<div align="center">
-			<div id="bottom-footer">
-				<div class="container">
-					<p class="alignleft">Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</p>
+		</div>
+		<footer>
+			<div align="center">
+				<div id="bottom-footer">
+					<div class="container">
+						<p class="alignleft">Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</footer>';
+		</footer>';
 }
 ?>

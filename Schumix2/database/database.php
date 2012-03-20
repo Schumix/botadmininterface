@@ -16,7 +16,7 @@ class Database
 	 */
 	function __construct()
 	{
-		include"config.php";
+		include "config.php";
 		$this->db_host=$database_Hostname;
 		$this->db_user=$database_Username;
 		$this->db_pass=$database_Password;
