@@ -1,5 +1,5 @@
 <?php
-if(!session_is_registered(acc))
+if(!session_is_registered("acc"))
 	header("location:index.php");
 
 function commands()

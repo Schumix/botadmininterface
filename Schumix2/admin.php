@@ -86,7 +86,9 @@ if(isset($_GET['home']))
 			<div id="kozep-a1"></div>';
 	Copyright();
 }
-else if($_GET['status'] == 2)
+else if(isset($_GET['status']))
+{
+if($_GET['status'] == 2)
 {
 	echo '<div align="center">Sikeresen bejelentkeztél <font color="red">'.$_SESSION["user"].'</font>!</div>';
 	header("refresh:1;url=admin.php?home");
@@ -101,6 +103,7 @@ else if($_GET['status'] == 1)
 	header("refresh:1;url=index.php");
 	echo '<div align="center">Sikeresen kijelentkeztél.</div>';
 	Copyright();
+}
 }
 else if(isset($_GET['irccommands']))
 {
