@@ -25,13 +25,13 @@ include "functions/website.php";
 echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 				<li id="admin-bar-my-account" class="menupop with-avatar">
 					<a class="ab-item" tabindex="10" aria-haspopup="true" title="Felhasználói fiókom">Üdvözlet '.$_SESSION["user"].'
-						<img src="images/kprofil" class="avatar avatar-16 photo" height="16" width="16">
+						<img src="./images/kprofil.png" class="avatar avatar-16 photo" height="16" width="16">
 					</a>
 					<div class="ab-sub-wrapper">
 						<ul id="admin-bar-user-actions" class=" ab-submenu">
 							<li id="admin-bar-user-info">
 								<a class="ab-item" tabindex="-1">
-									<img src="images/profil" class="avatar avatar-64 photo" height="64" width="64">
+									<img src="./images/profil.png" class="avatar avatar-64 photo" height="64" width="64">
 									<span class="display-name">'.$_SESSION["user"].'</span>
 									<span class="username">Ip: '.getenv("REMOTE_ADDR").'</span>
 									<span class="username">Rang: '.ranktostring($_SESSION["rank"]).'</span>
