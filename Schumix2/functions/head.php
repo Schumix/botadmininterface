@@ -3,7 +3,8 @@ function head($title = "")
 {
 	if($title != "")
 		$title = " - ".$title;
-	echo '<head>
+	echo '
+<head>
 	<title>Schumix2 admin felület'.$title.'</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="description" content="Schumix2 admin felület'.$title.'" />

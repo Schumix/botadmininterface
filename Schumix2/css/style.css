@@ -294,6 +294,12 @@ footer
 	line-height: 16px;
 }
 
+#bottom-footer a
+{
+	text-decoration: none;
+	color: #999;
+}
+
 #pagename
 {
 	background: url(../images/pagename-bg.png) no-repeat left top;

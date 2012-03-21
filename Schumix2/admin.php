@@ -112,22 +112,22 @@ if(isset($_GET['home']))
 }
 else if(isset($_GET['status']))
 {
-if($_GET['status'] == 2)
-{
-	echo '<div align="center">Sikeresen bejelentkeztél <font color="red">'.$_SESSION["user"].'</font>!</div>';
-	header("refresh:1;url=admin.php?home");
-	Copyright();
-}
-else if($_GET['status'] == 1)
-{
-	unset($_SESSION["user"]);
-	unset($_SESSION["rank"]);
-	session_unset();
-	session_destroy();
-	header("refresh:1;url=index.php");
-	echo '<div align="center">Sikeresen kijelentkeztél.</div>';
-	Copyright();
-}
+	if($_GET['status'] == 2)
+	{
+		echo '<div align="center">Sikeresen bejelentkeztél <font color="red">'.$_SESSION["user"].'</font>!</div>';
+		header("refresh:1;url=admin.php?home");
+		Copyright();
+	}
+	else if($_GET['status'] == 1)
+	{
+		unset($_SESSION["user"]);
+		unset($_SESSION["rank"]);
+		session_unset();
+		session_destroy();
+		header("refresh:1;url=index.php");
+		echo '<div align="center">Sikeresen kijelentkeztél.</div>';
+		Copyright();
+	}
 }
 else if(isset($_GET['irccommands']))
 {

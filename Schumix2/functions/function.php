@@ -44,7 +44,9 @@ echo '
 			<div align="center">
 				<div id="bottom-footer">
 					<div class="container">
-						<p class="alignleft">Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</p>
+						<p class="alignleft">
+							Copyright © 2011-2012 <a href="http://yeahunter.hu" title="Yeahunter Team">yeahunter.hu</a> Minden jog fenntartva.
+						</p>
 					</div>
 				</div>
 			</div>
