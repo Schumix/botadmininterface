@@ -25,6 +25,11 @@ else
 	head("Bejelentkező");
 ?>
 <body>
+	<div id="wpadminbar">
+		<div class="quicklinks">
+			<?php include "functions/website.php"; ?>
+		</div>
+	</div>
 	<div id="container">
 		<div id="login-center">
 			<form method="post" action="login.php">

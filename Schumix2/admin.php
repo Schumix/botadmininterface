@@ -16,15 +16,40 @@ if(!session_is_registered("acc"))
 	header("location:index.php");
 
 echo '<body>
+	<div id="wpadminbar">
+		<div class="quicklinks">
+';
+
+include "functions/website.php";
+
+echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+				<li id="admin-bar-my-account" class="menupop with-avatar">
+					<a class="ab-item" tabindex="10" aria-haspopup="true" title="Felhasználói fiókom">Üdvözlet '.$_SESSION["user"].'
+						<img src="images/kprofil" class="avatar avatar-16 photo" height="16" width="16">
+					</a>
+					<div class="ab-sub-wrapper">
+						<ul id="admin-bar-user-actions" class=" ab-submenu">
+							<li id="admin-bar-user-info">
+								<a class="ab-item" tabindex="-1">
+									<img src="images/profil" class="avatar avatar-64 photo" height="64" width="64">
+									<span class="display-name">'.$_SESSION["user"].'</span>
+									<span class="username">Ip: '.getenv("REMOTE_ADDR").'</span>
+									<span class="username">Rang: '.ranktostring($_SESSION["rank"]).'</span>
+								</a>
+							</li>
+							<li id="admin-bar-logout">
+								<a class="ab-item" tabindex="10" href="admin.php?status=1">Kijelentkezés</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
 	<div id="header">
 		<div class="wrapper">
 			<div class="navbar"></div>
 			<h1>Schumix admin felület</h1>
-			<div class="ablak">
-				<font color="#FFFFFF">Felhasználó név: </font><font color="red">'.$_SESSION["user"].'</font><br />
-				<font color="#FFFFFF">Ip címed: </font><font color="red">'.getenv("REMOTE_ADDR").'</font><br />
-				<font color="#FFFFFF">Jelenlegi rangod: </font><font color="red">'.ranktostring($_SESSION["rank"]).'</font>
-			</div>
 		</div>
 		<div align="center">
 			<ul class="sf-menu">
@@ -44,7 +69,6 @@ echo '<body>
 						<li><a href="admin.php?asd">Teszt</a></li>
 					</ul>
 				</li>
-				<li><a href="admin.php?status=1">Kilépés</a></li>
 			</ul>
 		</div>
 		<div id="kozep-a1"></div>

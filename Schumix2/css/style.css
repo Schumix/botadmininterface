@@ -252,25 +252,6 @@ div#kozep
 	padding-bottom: 40px;
 }
 
-.ablak
-{
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
-}
-
-.ablak
-{
-	position: relative;
-	width: 220px;
-	background: #1a1a1a;
-	border: 1px solid #ccc;
-	left: 718px;
-	margin-top: -95px;
-	margin-bottom: 16px;
-	padding: 10px;
-}
-
 .navbar
 {
 	text-align: right;
