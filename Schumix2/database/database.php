@@ -21,6 +21,7 @@ class Database
 		$this->db_user=$database_Username;
 		$this->db_pass=$database_Password;
 		$this->db_name=$database_Name;
+		$this->db_charset=$database_charset;
 		$this->connect();
 	}
 
@@ -36,6 +37,7 @@ class Database
 			$myconn = @mysql_connect($this->db_host, $this->db_user, $this->db_pass);
 			if($myconn)
 			{
+				mysql_set_charset($this->db_charset, $myconn);
 				$seldb = @mysql_select_db($this->db_name, $myconn);
 				if($seldb)
 				{

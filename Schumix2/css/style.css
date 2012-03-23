@@ -354,3 +354,11 @@ footer
 	border: 1px solid #ccc;
 	padding: 15px;
 }
+
+.user-vhost.border 
+{
+	border-left: 2px;
+	border-right: 2px;
+	border-color: #000080;
+	border-style: solid;
+}

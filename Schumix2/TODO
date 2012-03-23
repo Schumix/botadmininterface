@@ -1,5 +1,6 @@
 - Timeout megírása.
 - Emlékezzen a bejelentkezőre rész kéne a login gomb mellé.
+- User lekérdezésnél hiba van ha csak 1 felhasználó van.
 
 31<Megaxxx>30 pl hl üzenet átírás
 31<Megaxxx>30 message parancs ellenőrzése

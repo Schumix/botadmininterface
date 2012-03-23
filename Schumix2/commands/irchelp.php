@@ -4,5 +4,3 @@ if(!session_is_registered("acc"))
 ?>
 
 Itt lehet majd megnézni a help parancsokat és a használatát megtudni.
-
-<? Copyright(); ?>

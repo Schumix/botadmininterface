@@ -4,5 +4,3 @@ if(!session_is_registered("acc"))
 ?>
 
 Ide lesznek majd kiírva milyen parancsok létezne.
-
-<? Copyright(); ?>

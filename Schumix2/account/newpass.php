@@ -5,13 +5,6 @@ if(!session_is_registered("acc"))
 //include "database.php";
 
 echo '
-			<div id="pagename">
-				<div class="inside">
-					<h2>Új jelszó</h2>
-					<p>Ezen menüpont segítségével új jelszó generálható a régi helyett.</p>
-				</div>
-			</div>
-			<div id="sidebar-border">
 				<div align="center">
 					<table>
 						<form method="post">
@@ -21,15 +14,10 @@ echo '
 							<div align="center"><input type="submit" value="Módosítás"></div>
 						</form>
 					</table>
-				</div>
-			</div>
-			<div id="kozep-a1"></div>';
+				</div>';
 
 if(!$_POST)
-{
-	Copyright();
 	return;
-}
 
 if(empty($_POST['oldpass']) || empty($_POST['newpass']) || empty($_POST['newpass2']))
 	echo 'Valamelyik mező nincs kitöltve!';
@@ -54,7 +42,5 @@ else
 			echo '<div align="center">Nem egyezik meg a régi jelszó a tárolt változattal!</div>';
 	}
 }
-
-Copyright();
 
 ?>
