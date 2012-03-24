@@ -20,7 +20,7 @@ foreach($db->getResult() as $row)
 //<div align="right"><a href="javascript:history.go(-1)">Vissza</a></div>
 ?>
 
-				<table cellpadding="5" cellspacing="1" width="500px" border="0">
+				<table cellpadding="5" cellspacing="0" width="500px" border="0">
 					<tr>
 						<td width="200px"><b>Felhasználó<b></td>
 						<td width="200px"><b>Vhost<b></td>

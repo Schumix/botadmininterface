@@ -53,19 +53,30 @@ echo '
 		</footer>';
 }
 
-/*function Home()
-{
-}*/
-
 function IsPage($page)
 {
 	$db = new Database();
 	$page = $db->escape(stripslashes($page));
 	$row = $db->select('pages', 'Include_PageName', "Include_PageName='".$page."'");
+
 	if($row)
 	{
 		$r = $db->getResult();
-		return ($r["Include_PageName"] == "") ? false : true;
+
+		if($r["Include_PageName"] == "")
+		{
+			$row1 = $db->select('pages_subpages', 'Include_PageName', "Include_PageName='".$page."'");
+
+			if($row1)
+			{
+				$r1 = $db->getResult();
+				return ($r1["Include_PageName"] == "") ? false : true;
+			}
+			else
+				return false;
+		}
+		else
+			return true;
 	}
 	else
 		return false;
@@ -75,20 +86,43 @@ function GetPageData($page)
 {
 	$db = new Database();
 	$page = $db->escape(stripslashes($page));
-	$row = $db->select('pages', 'PageName, SubPage, Title, Head, Include, Include_Link, Page_Data', "Include_PageName='".$page."'");
+	$row = $db->select('pages', 'PageName, SubPage, Title, Head, Include, Include_Link, Include_PageName, Page_Data', "Include_PageName='".$page."'");
 
 	if($row)
 	{
 		$r = $db->getResult();
-		$page_name = "";
 
-		if($r["PageName"] == "")
-			$page_name = $r["SubPage"];
-		else
-			$page_name = $r["PageName"];
+		if($r["Include_PageName"] == "")
+		{
+			$row1 = $db->select('pages_subpages', 'PageName, SubPage, Title, Head, Include, Include_Link, Page_Data', "Include_PageName='".$page."'");
+
+			if($row1)
+			{
+				$r1 = $db->getResult();
+				$array = array(
+				"PageName" => $r1["SubPage"],
+				"Title" => $r1["Title"],
+				"Head" => $r1["Head"],
+				"Include" => $r1["Include"],
+				"Include_Link" => $r1["Include_Link"],
+				"Page_Data" => $r1["Page_Data"]);
+				return $array;
+			}
+			else
+			{
+				$array2 = array(
+				"PageName" => "???",
+				"Title" => "???",
+				"Head" => "???",
+				"Include" => "???",
+				"Include_Link" => "???",
+				"Page_Data" => "???");
+				return $array2;
+			}
+		}
 
 		$array = array(
-		"PageName" => $page_name,
+		"PageName" => $r["PageName"],
 		"Title" => $r["Title"],
 		"Head" => $r["Head"],
 		"Include" => $r["Include"],
@@ -112,6 +146,7 @@ function GetPageData($page)
 function GetLinks($page)
 {
 	$db = new Database();
+	$db1 = new Database();
 	$db->select('pages', 'PageName, SubPage, Include_PageName');
 
 	$output = "";
@@ -121,29 +156,62 @@ function GetLinks($page)
 		if($row["Include_PageName"] == "logout" || $row["Include_PageName"] == "status=2")
 			continue;
 
-		//if($row["SubPage"] == "")
-			$output .= '
+		if(strtolower($row["SubPage"]) == "false")
+		{
+			if($page == $row["Include_PageName"])
+			{
+				$output .= '
+				<li class="current_page_item"><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a></li>';
+			}
+			else
+			{
+				$output .= '
 				<li><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a></li>';
-		//else
-		//{
-		//}
+			}
+		}
+		else
+		{
+			$ou = "";
+			$ispage = false;
+			$db1->select('pages_subpages', 'SubPage, Include_PageName', "PageName='".$row["PageName"]."'");
+
+			foreach($db1->getResult() as $row1)
+			{
+				if($page == $row1["Include_PageName"])
+				{
+					$ispage = true;
+					$ou .= '
+						<li class="current_page_item"><a href="admin.php?'.$row1["Include_PageName"].'">'.$row1["SubPage"].'</a></li>';
+				}
+				else
+				{
+					$ou .= '
+						<li><a href="admin.php?'.$row1["Include_PageName"].'">'.$row1["SubPage"].'</a></li>';
+				}
+			}
+
+			if($ispage)
+			{
+				/*$output .= '
+				<li class="current_page_item"><a style="cursor:pointer;">'.$row["PageName"].'</a>
+					<ul>';*/ // megjelölni hogy ebben van megnyitva egy link
+				$output .= '
+				<li><a style="cursor:pointer;">'.$row["PageName"].'</a>
+					<ul style="display: none; visibility: hidden; ">';
+			}
+			else
+			{
+				$output .= '
+				<li><a style="cursor:pointer;">'.$row["PageName"].'</a>
+					<ul style="display: none; visibility: hidden; ">';
+			}
+
+			$output .= $ou;
+			$output .= '
+					</ul>
+				</li>';
+		}
 	}
-				/*<li><a href="admin.php?home">Főoldal</a></li>
-				<li><a href="admin.php?users">Felhasználók</a></li>
-				<li><a style="cursor:pointer;">Parancsok /Fejlesztés alatt/</a>
-					<ul>
-						<li><a href="admin.php?irccommands">Irc parancsok</a></li>
-						<li><a href="admin.php?chelp">Irc help parancsok</a></li>
-						<li><a href="admin.php?ccommands">Konzol parancsok</a></li>
-						<li><a href="admin.php?chelp">Konzol help parancsok</a></li>
-					</ul>
-				</li>
-				<li><a style="cursor:pointer;">Beállítások</a>
-					<ul>
-						<li><a href="admin.php?newpass">Új jelszó</a></li>
-						<li><a href="admin.php?asd">Teszt</a></li>
-					</ul>
-				</li>*/
 
 	return $output;
 }

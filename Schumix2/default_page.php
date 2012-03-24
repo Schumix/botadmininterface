@@ -4,7 +4,6 @@ function Page($page_name, $user, $ip, $rank, $site_href)
 {
 echo '<html>';
 $page_name = str_replace($site_href, "", $page_name);
-$array = GetPageData($page_name);
 
 if($page_name == "admin.php")
 	$page_name = "home";
@@ -31,7 +30,7 @@ echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 						<img src="./images/kprofil.png" class="avatar avatar-16 photo" height="16" width="16">
 					</a>
 					<div class="ab-sub-wrapper">
-						<ul id="admin-bar-user-actions" class=" ab-submenu">
+						<ul id="admin-bar-user-actions" class="ab-submenu">
 							<li id="admin-bar-user-info">
 								<a class="ab-item" tabindex="-1">
 									<img src="./images/profil.png" class="avatar avatar-64 photo" height="64" width="64">
@@ -55,7 +54,7 @@ echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 			<h1>Schumix admin felület</h1>
 		</div>
 		<div align="center">
-			<ul class="sf-menu">';
+			<ul class="sf-menu sf-js-enabled">';
 
 	echo GetLinks($page_name);
 	echo '
@@ -77,11 +76,12 @@ echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 			</div>
 			<div id="sidebar-border">';
 
-				if($array["Include"] == "true")
+				if(strtolower($array["Include"]) == "true")
 					include $array["Include_Link"];
 				else
 					echo $array["Page_Data"];
-	echo '			</div>';
+	echo '
+			</div>';
 			}
 			else
 			{

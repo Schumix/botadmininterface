@@ -98,6 +98,7 @@ class Database
 	 */
 	public function select($table, $rows = '*', $where = null, $order = null)
 	{
+		$this->result = array();
 		$q = 'SELECT '.$rows.' FROM '.$table;
 
 		if($where != null)

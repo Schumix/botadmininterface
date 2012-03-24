@@ -59,13 +59,13 @@ a
 	color: black;
 }
 
-div.centered table 
+div.centered table
 {
 	margin: 0 auto; 
 	text-align: left;
 }
 
-div.centered 
+div.centered
 {
 	text-align: center;
 }
@@ -268,6 +268,13 @@ ul.sf-menu
 	width: 960px;
 }
 
+h2
+{
+	font-weight: normal;
+	font-size: 26px;
+	line-height: 26px;
+}
+
 footer
 {
 	height: auto;
@@ -316,7 +323,7 @@ footer
 
 #pagename .inside
 {
-	padding: 10px 20px 30px;
+	padding: 1px 20px 30px;
 	background: url(../images/kozep-a-alja.png) no-repeat scroll center 100px;
 }
 
@@ -359,6 +366,6 @@ footer
 {
 	border-left: 2px;
 	border-right: 2px;
-	border-color: #000080;
-	border-style: solid;
+	border-color: #f2f2f2;
+	border-style: ridge;
 }
