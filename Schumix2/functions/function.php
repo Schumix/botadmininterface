@@ -196,15 +196,38 @@ function GetLinks($page)
 				<li class="current_page_item"><a style="cursor:pointer;">'.$row["PageName"].'</a>
 					<ul>';*/ // megjelölni hogy ebben van megnyitva egy link
 				$output .= '
-				<li><a style="cursor:pointer;">'.$row["PageName"].'</a>
-					<ul style="display: none; visibility: hidden; ">';
+				<li><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a>
+					<ul>';
 			}
 			else
 			{
 				$output .= '
-				<li><a style="cursor:pointer;">'.$row["PageName"].'</a>
-					<ul style="display: none; visibility: hidden; ">';
+				<li><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a>
+					<ul>';
 			}
+
+/*        <li><a href="index.html">Home</a></li>
+        <li><a href="page.html">Company</a>
+          <ul>
+            <li><a href="full-width.html">Layout Options</a></li>
+            <li><a href="#">Level #3</a>
+              <ul>
+                <li><a href="#">Just For Demonstration Purposes</a></li>
+                <li><a href="#">Demonstration</a></li>
+                <li><a href="#">Purposes</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="current_page_item"><a href="blog.html">Blog</a>
+           <ul>
+              <li><a href="single.html">Single Post</a></li>
+           </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>*/ // megoldás az almenüben lévő újabb almenüre.
 
 			$output .= $ou;
 			$output .= '

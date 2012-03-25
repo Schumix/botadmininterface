@@ -222,6 +222,8 @@ div#kozep
 {
 	background: url(../images/kozep-a-alja.png) no-repeat;
 	background-position: top center;
+	margin-left: auto;
+	margin-right: auto;
 	height: 20px;
 }
 
@@ -237,7 +239,7 @@ div#kozep
 
 .wrapper
 {
-	width: 970px;
+	width: 960px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -261,11 +263,19 @@ div#kozep
 	padding-top: 20px;
 }
 
+.footer a
+{
+	text-decoration: none;
+	color: #000000;
+}
+
 ul.sf-menu
 {
 	background: url(../images/link.png) no-repeat top left;
 	height: 42px;
-	width: 960px;
+	width: 950px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 h2

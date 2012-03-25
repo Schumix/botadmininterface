@@ -18,8 +18,12 @@ if(!empty($_POST['acc']) && !empty($_POST['pass']))
 			session_register("acc");
 			$_SESSION["user"] = $acc;
 			$_SESSION["rank"] = rank($acc);
-			session_register("pass"); 
-			header("location:admin.php?status=2");
+			session_register("pass");
+
+			if(isset($_GET['redirect_to']))
+				header("location:".$_GET['redirect_to']);
+			else
+				header("location:admin.php?status=2");
 	}
 	else
 	{

@@ -26,7 +26,7 @@ include "functions/website.php";
 
 echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 				<li id="admin-bar-my-account" class="menupop with-avatar">
-					<a class="ab-item" tabindex="10" aria-haspopup="true" title="Felhasználói fiókom">Üdvözlet '.$user.'
+					<a class="ab-item" tabindex="10" aria-haspopup="true" href="admin.php?profile" title="Felhasználói adatlap">Üdvözlet '.$user.'
 						<img src="./images/kprofil.png" class="avatar avatar-16 photo" height="16" width="16">
 					</a>
 					<div class="ab-sub-wrapper">
@@ -53,15 +53,13 @@ echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 			<div class="navbar"></div>
 			<h1>Schumix admin felület</h1>
 		</div>
-		<div align="center">
-			<ul class="sf-menu sf-js-enabled">';
+		<div class="wrapper">
+			<ul class="sf-menu">';
 
 	echo GetLinks($page_name);
 	echo '
 			</ul>
-		</div>
-		<div id="kozep-a1"></div>
-		<div class="wrapper">';
+			<div id="kozep-a1"></div>';
 
 //include "lvls/lvl".$_SESSION["rank"].".php"; // ezt majd a menű részhez kell igazítani
 

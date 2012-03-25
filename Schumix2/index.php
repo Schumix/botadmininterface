@@ -32,7 +32,18 @@ else
 	</div>
 	<div id="container">
 		<div id="login-center">
-			<form method="post" action="login.php">
+<?php
+if(isset($_GET['redirect_to']))
+{
+	echo '
+			<form method="post" action="login.php?redirect_to='.$_GET['redirect_to'].'">';
+}
+else
+{
+	echo '
+			<form method="post" action="login.php">';
+}
+?>
 				<div id="login-text">Bejelentkező
 					<a href="https://github.com/megax/Schumix2">
 						<img src="./images/logo.png" style="height: 48px; width: 48px; margin-top: -30px; margin-left: 200px;" title="Schumix2">
@@ -76,6 +87,10 @@ else
 			</form>
 		</div>
 	</div>
-	<div style="position:absolute; left:50%; margin-left: -195px;  margin-top: 500px;"><h4>Copyright © 2011-2012 yeahunter.hu. Minden jog fenntartva.</h4></div>
+	<div class="footer">
+		<div style="position:absolute; left:50%; margin-left: -195px;  margin-top: 500px;">
+			<h4>Copyright © 2011-2012 <a href="http://yeahunter.hu" title="Yeahunter Team">yeahunter.hu</a> Minden jog fenntartva.</h4>
+		</div>
+	</div>
 </body>
 </html>

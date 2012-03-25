@@ -39,8 +39,8 @@ INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include
 INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Kijelentkezés", "false", "Kijelentkezés a felhasználóból.", "Kijelentkezés", "true", "logout", "logout.php", "");
 INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Sikeres belépés", "false", "", "Sikeres belépés", "true", "status=2", "login_success.php", "");
 INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Felhasználók", "false", "Megtudható a felhasználó neve, vhostja (ha aktiválva van) és a rangja.", "Felhasználók", "true", "users", "users.php", "");
-INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Parancsok /Fejlesztés alatt/", "true", "", "", "", "1", "", "");
-INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Beállítások", "true", "", "", "", "2", "", "");
+INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Parancsok /Fejlesztés alatt/", "true", "Fejlesztés alatt.", "Parancsok /Fejlesztés alatt/", "false", "1", "allcommands", "");
+INSERT INTO `pages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Beállítások", "true", "Felhasználok álltal konfugurálható beállítások összesége.", "Beállítások", "false", "settings", "", "");
 
 -- ----------------------------
 -- Table structure for pages_subpages
@@ -63,4 +63,5 @@ INSERT INTO `pages_subpages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`,
 INSERT INTO `pages_subpages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Parancsok /Fejlesztés alatt/", "Konzol parancsok", "Konzol parancsok", "Konzol parancsok", "true", "ccommands", "commands/ccommands.php", "");
 INSERT INTO `pages_subpages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Parancsok /Fejlesztés alatt/", "Konzol help parancsok", "Konzol help parancsok", "Konzol help parancsok", "true", "chelp", "commands/chelp.php", "");
 INSERT INTO `pages_subpages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Beállítások", "Új jelszó", "Ezen menüpont segítségével új jelszó generálható a régi helyett.", "Új jelszó", "true", "newpass", "account/newpass.php", "");
+INSERT INTO `pages_subpages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Beállítások", "Profil", "Fejlesztés alatt.", "Profil", "true", "profile", "account/profile.php", "");
 INSERT INTO `pages_subpages` (`PageName`, `SubPage`, `Title`, `Head`, `Include`, `Include_PageName`, `Include_Link`, `Page_Data`) VALUES ("Beállítások", "Teszt", "Teszt", "Teszt", "false", "teszt", "", "Tesztttttttttttttttttttttttttttttttttttttt");
