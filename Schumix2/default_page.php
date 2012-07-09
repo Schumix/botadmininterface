@@ -5,10 +5,10 @@ function Page($page_name, $user, $ip, $rank, $site_href)
 echo '<html>';
 $page_name = str_replace($site_href, "", $page_name);
 
-if($page_name == "admin.php")
+if($page_name == "index.php" || $page_name == "")
 	$page_name = "home";
 else
-	$page_name = str_replace("admin.php?", "", $page_name);
+	$page_name = str_replace("index.php?", "", $page_name);
 
 $array = GetPageData($page_name);
 
@@ -24,6 +24,7 @@ echo '<body>
 
 include "functions/website.php";
 
+if($user != "/ghost/")
 echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 				<li id="admin-bar-my-account" class="menupop with-avatar">
 					<a class="ab-item" tabindex="10" aria-haspopup="true" href="admin.php?profile" title="Felhasználói adatlap">Üdvözlet '.$user.'
@@ -40,7 +41,7 @@ echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 								</a>
 							</li>
 							<li id="admin-bar-logout">
-								<a class="ab-item" tabindex="10" href="admin.php?logout">Kijelentkezés</a>
+								<a class="ab-item" tabindex="10" href="index.php?logout">Kijelentkezés</a>
 							</li>
 						</ul>
 					</div>
@@ -55,8 +56,21 @@ echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 		</div>
 		<div class="wrapper">
 			<ul class="sf-menu">';
+else
+{
+	echo '
+		</div>
+	</div>
+	<div id="header">
+		<div class="wrapper">
+			<div class="navbar"></div>
+			<h1>Schumix weboldala</h1>
+		</div>
+		<div class="wrapper">
+			<ul class="sf-menu">';
+}
 
-	echo GetLinks($page_name);
+	echo GetLinks($page_name, rank($user), $site_href);
 	echo '
 			</ul>
 			<div id="kozep-a1"></div>';
@@ -91,7 +105,7 @@ echo '			<ul id="admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
 		</div>';
 
 				Copyright();
-				header("refresh:2;url=admin.php?home");
+				header("refresh:2;url=index.php?home");
 			}
 
 	echo '

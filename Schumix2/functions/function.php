@@ -3,6 +3,9 @@ include "database/database.php";
 
 function rank($nick)
 {
+	if($nick == "/ghost/")
+		return 9;
+
 	$db = new Database();
 	$nick = $db->escape(stripslashes($nick));
 	$row = $db->select('admins', 'Flag', "Name='".$nick."'");
@@ -10,10 +13,34 @@ function rank($nick)
 	if($row)
 	{
 		$r = $db->getResult();
-		return $r["Flag"];
+		return (int)$r["Flag"];
 	}
 	else
-		return "Te egy Senki vagy!";
+		return 9;
+}
+
+function IsAdminPage($rank, $rank1)
+{
+	if($rank == 9)
+	{
+		if($rank1 == 9)
+			return true;
+	}
+	else
+	{
+		if(($rank == 1 && $rank1 == 0) ||
+			($rank == 2 && $rank1 == 0) ||
+			($rank == 2 && $rank1 == 1) ||
+			($rank >= 0 && $rank1 == 9))
+		{
+			return true;
+		}
+
+		if($rank == $rank1)
+			return true;
+	}
+
+	return false;
 }
 
 function ranktostring($rank)
@@ -86,7 +113,7 @@ function GetPageData($page)
 {
 	$db = new Database();
 	$page = $db->escape(stripslashes($page));
-	$row = $db->select('pages', 'PageName, SubPage, Title, Head, Include, Include_Link, Include_PageName, Page_Data', "Include_PageName='".$page."'");
+	$row = $db->select('pages', 'PageName, SubPage, Title, Head, Include, Include_Link, Include_PageName, Page_Data, Rank', "Include_PageName='".$page."'");
 
 	if($row)
 	{
@@ -94,7 +121,7 @@ function GetPageData($page)
 
 		if($r["Include_PageName"] == "")
 		{
-			$row1 = $db->select('pages_subpages', 'PageName, SubPage, Title, Head, Include, Include_Link, Page_Data', "Include_PageName='".$page."'");
+			$row1 = $db->select('pages_subpages', 'PageName, SubPage, Title, Head, Include, Include_Link, Page_Data, Rank', "Include_PageName='".$page."'");
 
 			if($row1)
 			{
@@ -105,7 +132,8 @@ function GetPageData($page)
 				"Head" => $r1["Head"],
 				"Include" => $r1["Include"],
 				"Include_Link" => $r1["Include_Link"],
-				"Page_Data" => $r1["Page_Data"]);
+				"Page_Data" => $r1["Page_Data"],
+				"Rank" => (int)$r1["Rank"]);
 				return $array;
 			}
 			else
@@ -116,7 +144,8 @@ function GetPageData($page)
 				"Head" => "???",
 				"Include" => "???",
 				"Include_Link" => "???",
-				"Page_Data" => "???");
+				"Page_Data" => "???",
+				"Rank" => 9);
 				return $array2;
 			}
 		}
@@ -127,7 +156,8 @@ function GetPageData($page)
 		"Head" => $r["Head"],
 		"Include" => $r["Include"],
 		"Include_Link" => $r["Include_Link"],
-		"Page_Data" => $r["Page_Data"]);
+		"Page_Data" => $r["Page_Data"],
+		"Rank" => (int)$r["Rank"]);
 		return $array;
 	}
 	else
@@ -138,57 +168,75 @@ function GetPageData($page)
 		"Head" => "???",
 		"Include" => "???",
 		"Include_Link" => "???",
-		"Page_Data" => "???");
+		"Page_Data" => "???",
+		"Rank" => 9);
 		return $array;
 	}
 }
 
-function GetLinks($page)
+function GetLinks($page, $rank, $shref)
 {
 	$db = new Database();
 	$db1 = new Database();
-	$db->select('pages', 'PageName, SubPage, Include_PageName');
+	$db->select('pages', 'PageName, SubPage, Include_PageName, Include_Link, Rank');
 
 	$output = "";
 
 	foreach($db->getResult() as $row)
 	{
-		if($row["Include_PageName"] == "logout" || $row["Include_PageName"] == "status=2")
+		if($row["Include_PageName"] == "logout" || $row["Include_PageName"] == "status=2" || ($row["Include_PageName"] == "login" && $rank >= 0 && $rank != 9))
 			continue;
 
 		if(strtolower($row["SubPage"]) == "false")
 		{
+			if(!IsAdminPage($rank, $row["Rank"]))
+				continue;
+
 			if($page == $row["Include_PageName"])
 			{
 				$output .= '
-				<li class="current_page_item"><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a></li>';
+				<li class="current_page_item"><a href="index.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a></li>';
 			}
 			else
 			{
-				$output .= '
-				<li><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a></li>';
+				if($row["Include_PageName"] == "login")
+				{
+					$output .= '
+				<li><a href="http://'.$_SERVER["HTTP_HOST"].$shref.$row["Include_Link"].'">'.$row["PageName"].'</a></li>';
+				}
+				else
+				{
+					$output .= '
+				<li><a href="index.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a></li>';
+				}
 			}
 		}
 		else
 		{
 			$ou = "";
 			$ispage = false;
-			$db1->select('pages_subpages', 'SubPage, Include_PageName', "PageName='".$row["PageName"]."'");
+			$db1->select('pages_subpages', 'SubPage, Include_PageName, Rank', "PageName='".$row["PageName"]."'");
 
 			foreach($db1->getResult() as $row1)
 			{
+				if(!IsAdminPage($rank, $row1["Rank"]))
+					continue;
+
 				if($page == $row1["Include_PageName"])
 				{
 					$ispage = true;
 					$ou .= '
-						<li class="current_page_item"><a href="admin.php?'.$row1["Include_PageName"].'">'.$row1["SubPage"].'</a></li>';
+						<li class="current_page_item"><a href="index.php?'.$row1["Include_PageName"].'">'.$row1["SubPage"].'</a></li>';
 				}
 				else
 				{
 					$ou .= '
-						<li><a href="admin.php?'.$row1["Include_PageName"].'">'.$row1["SubPage"].'</a></li>';
+						<li><a href="index.php?'.$row1["Include_PageName"].'">'.$row1["SubPage"].'</a></li>';
 				}
 			}
+
+			if(!IsAdminPage($rank, $row["Rank"]))
+				continue;
 
 			if($ispage)
 			{
@@ -196,38 +244,15 @@ function GetLinks($page)
 				<li class="current_page_item"><a style="cursor:pointer;">'.$row["PageName"].'</a>
 					<ul>';*/ // megjelölni hogy ebben van megnyitva egy link
 				$output .= '
-				<li><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a>
+				<li><a href="index.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a>
 					<ul>';
 			}
 			else
 			{
 				$output .= '
-				<li><a href="admin.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a>
+				<li><a href="index.php?'.$row["Include_PageName"].'">'.$row["PageName"].'</a>
 					<ul>';
 			}
-
-/*        <li><a href="index.html">Home</a></li>
-        <li><a href="page.html">Company</a>
-          <ul>
-            <li><a href="full-width.html">Layout Options</a></li>
-            <li><a href="#">Level #3</a>
-              <ul>
-                <li><a href="#">Just For Demonstration Purposes</a></li>
-                <li><a href="#">Demonstration</a></li>
-                <li><a href="#">Purposes</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li class="current_page_item"><a href="blog.html">Blog</a>
-           <ul>
-              <li><a href="single.html">Single Post</a></li>
-           </ul>
-        </li>
-        <li><a href="contact.html">Contact</a></li>*/ // megoldás az almenüben lévő újabb almenüre.
 
 			$output .= $ou;
 			$output .= '

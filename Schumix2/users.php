@@ -5,16 +5,28 @@ if(!session_is_registered("acc"))
 //include "database.php";
 
 $db = new Database();
-$acc = $db->escape(stripslashes($_POST['acc']));
 $db->select('admins');
+$output = "";
 
-foreach($db->getResult() as $row)
+if($db->get_num_rows() == 1)
 {
+	$r = $db->getResult();
 	$output .= '<tr>';
-	$output .= '	<td><pre>'.$row["Name"].'</pre></td>';
-	$output .= '	<td class="user-vhost border"><pre>'.vhost($row["Vhost"]).'</pre></td>';
-	$output .= '	<td>'.ranktostring($row["Flag"]).'</td>';
+	$output .= '	<td><pre>'.$r["Name"].'</pre></td>';
+	$output .= '	<td class="user-vhost border"><pre>'.vhost($r["Vhost"]).'</pre></td>';
+	$output .= '	<td>'.ranktostring($r["Flag"]).'</td>';
 	$output .= '</tr>';
+}
+else
+{
+	foreach($db->getResult() as $row)
+	{
+		$output .= '<tr>';
+		$output .= '	<td><pre>'.$row["Name"].'</pre></td>';
+		$output .= '	<td class="user-vhost border"><pre>'.vhost($row["Vhost"]).'</pre></td>';
+		$output .= '	<td>'.ranktostring($row["Flag"]).'</td>';
+		$output .= '</tr>';
+	}
 }
 
 //<div align="right"><a href="javascript:history.go(-1)">Vissza</a></div>

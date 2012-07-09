@@ -198,8 +198,8 @@ input[type=text][readonly=readonly]:focus
 	box-shadow: none;
 }
 
-	input[type=password].form-error,
-	input[type=text].form-error
+input[type=password].form-error,
+input[type=text].form-error
 {
 	border: 1px solid #dd4b39;
 }
@@ -378,4 +378,24 @@ footer
 	border-right: 2px;
 	border-color: #f2f2f2;
 	border-style: ridge;
+}
+
+#websitebar
+{
+	height: 28px;
+	background: #464846;
+}
+
+#websitebar p#backtoblog a:link, #websitebar p#backtoblog a:visited
+{
+	background: #000000;
+}
+
+#websitebar p#backtoblog a:hover, #websitebar p#backtoblog a:active
+{
+	background: #000000;
+}
+
+#backtoblog
+{
 }
